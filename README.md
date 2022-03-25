@@ -53,7 +53,9 @@ rm -rf ./tmp && rm -rf .config
 make menuconfig
 make -j$(($(nproc) + 1)) V=s
 ```
-`rm -rf lede/ && git clone https://github.com/coolsnowwolf/lede && cd lede && ./scripts/feeds update -a && ./scripts/feeds install -a && make menuconfig`
+`rm -rf lede/ && git clone https://github.com/coolsnowwolf/lede && cd lede && sed '$a\src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.co
+nf.default && sed '$a\src-git small https://github.com/kenzok8/small' feeds.co
+nf.default && ./scripts/feeds update -a && ./scripts/feeds install -a && make menuconfig`
 编译完成后输出路径：bin/targets
 
 如果你使用WSL或WSL2进行编译：
